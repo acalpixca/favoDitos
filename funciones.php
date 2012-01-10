@@ -96,7 +96,7 @@ function formularioValidacion()
 {
 echo '<div class="formulario">';
 echo '<form name="login" action="userlinks.php"';
-echo 'method="get">';
+echo 'method="POST">';
 echo 'Usuario: <br>';
 echo '<input type="text" name="user"><br>';
 echo 'Contrase&ntilde;a:<br>';

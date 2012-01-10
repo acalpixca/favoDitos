@@ -17,11 +17,12 @@ FavoDitos, nuestro del.icio.us particular
 
 <?php
 include_once 'funciones.php';
+session_start();
 
-if (!empty($_GET['user']) && !empty($_GET['password']))
+if (!empty($_POST['user']) && !empty($_POST['password']))
 {
-	$_SESSION['user']=$_GET['user'];
-	$_SESSION['password']=$_GET['password'];
+	$_SESSION['user']=$_POST['user'];
+	$_SESSION['password']=$_POST['password'];
 }
 
 	$user=$_SESSION['user'];

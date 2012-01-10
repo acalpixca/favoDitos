@@ -19,7 +19,9 @@ include_once 'funciones.php';
 //$category=' '.trim($_GET['category']);
 $category=trim($_GET['category']);
 $user=trim($_SESSION['user']);
-echo '<div class="subheader"><span class="usuario">'.$user.'</span>, estos son tus <span class="favoDitos">favoDitos</span> para la categor&iacute;a <span class="categoria">'. $category.'</span>. (<a href="nuevolink.php?user=' . $user . '">A&ntilde;ade un link</a>)   (<a href="http://www.lavigilanta.info/favoditos/userlinks.php?user='.$_SESSION['user'].'&password='.$_SESSION['password'].'">todos tus links</a>)</div>';
+//echo '<div class="subheader"><span class="usuario">'.$user.'</span>, estos son tus <span class="favoDitos">favoDitos</span> para la categor&iacute;a <span class="categoria">'. $category.'</span>. (<a href="nuevolink.php?user=' . $user . '">A&ntilde;ade un link</a>)   (<a href="http://www.lavigilanta.info/favoditos/userlinks.php?user='.$_SESSION['user'].'&password='.$_SESSION['password'].'">todos tus links</a>)</div>';
+
+echo '<div class="subheader"><span class="usuario">'.$user.'</span>, estos son tus <span class="favoDitos">favoDitos</span> para la categor&iacute;a <span class="categoria">'. $category.'</span>. (<a href="nuevolink.php?user=' . $user . '">A&ntilde;ade un link</a>)   (<a href="http://www.lavigilanta.info/favoditos/userlinks.php">todos tus links</a>)</div>';
 
 inicializaBBDD();
 
