@@ -29,7 +29,7 @@ mysql_select_db($BBDDname) or die('Could not select database');
 function validaUsuario($user,$password)
 
 {
-$query=sprintf('SELECT US.userId, US.password FROM userTable US WHERE US.userId ="' . mysql_real_escape_string($user) . '" AND US.password="' . mysql_real_escape_string($password) . '"');
+$query=sprintf('SELECT US.userId, US.password FROM userTable US WHERE US.userId ="' . mysql_real_escape_string($user) . '" AND US.password="' . mysql_real_escape_string(md5($password)) . '"');
 
 //$query='SELECT US.userId, US.password FROM userTable US WHERE US.userId ="' .$user . '" AND US.password="' .$password . '"';
 
