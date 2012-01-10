@@ -37,7 +37,7 @@ mysql_close($link);
 ?>
 <div class="formulario">
 <form name="aceptar" action="userlinks.php" method="get">
-<input type="submit" value="&#161;Aceptar">
+<input type="submit" value="Aceptar">
 </form>
 </div>
 
