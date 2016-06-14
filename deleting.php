@@ -9,6 +9,7 @@ $password=$_SESSION['password'];
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
 FavoDitos, nuestro del.icio.us particular
 </title>

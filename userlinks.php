@@ -7,17 +7,21 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
 FavoDitos, nuestro del.icio.us particular
 </title>
-<link rel="stylesheet" type="text/css" href=" estilo.css">
+<link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
+<div class="row">
+<div class="col-12 col-m-12">
 <h1><span class="favoDitos">FavoDitos</span><span class="nuestro">, nuestro <span class="delicious">del.icio.us</span> particular</span></h1>
-
+</div>
+</div>
 <?php
 include_once 'funciones.php';
-session_start();
+//session_start();
 
 if (!empty($_POST['user']) && !empty($_POST['password']))
 {
@@ -25,20 +29,26 @@ if (!empty($_POST['user']) && !empty($_POST['password']))
 	$_SESSION['password']=$_POST['password'];
 }
 
-	$user=$_SESSION['user'];
-	$password=$_SESSION['password'];
-	//echo 'usuario/password: ' .$user .$password;
+$user=$_SESSION['user'];
+$password=$_SESSION['password'];
+
 inicializaBBDD();
 
 $resul=validaUsuario($user,$password);
 
 if ($resul!=1)
 {
-echo 'La combinación de usuario y contraseña no es correcta. Inténtalo de nuevo...';
-formularioValidacion();
+	echo '</div>';
+	echo '<div class="row">';
+	echo '<div class="col-6 col-m-12">La combinaci&oacute;n de usuario y contrase&ntilde;a no es correcta. Int&eacute;ntalo de nuevo...</div>';
+	formularioValidacion();
+	echo '</div>';
 }
 else
 {
+	echo '<div class="row">';
+	generaCajaBusqueda();
+	echo '<div class="row">';
 	generaLinksUsuario($user);
 	generaCategorias($user);
 }
