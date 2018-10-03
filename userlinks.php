@@ -6,7 +6,7 @@ session_start();
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
 FavoDitos, nuestro del.icio.us particular
@@ -27,10 +27,13 @@ if (!empty($_POST['user']) && !empty($_POST['password']))
 {
 	$_SESSION['user']=$_POST['user'];
 	$_SESSION['password']=$_POST['password'];
+	ChromePhp::log('Contraseña y password en el formulario no vacíos');
 }
 
 $user=$_SESSION['user'];
 $password=$_SESSION['password'];
+ChromePhp::log($password);
+
 
 inicializaBBDD();
 

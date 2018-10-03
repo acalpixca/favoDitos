@@ -1,4 +1,0 @@
-
-Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in D:\software\xampp\htdocs\favoditos\funciones.php on line 27
-add @ before the name of the function, i.e. @mysql_connect()
-

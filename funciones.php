@@ -8,25 +8,42 @@
 // $urlita="http://www.lavigilanta.info/favoditos/";
 //$pathito="E:/xampplite/htdocs/azotador";
 
+include 'ChromePhp.php';
+/* https://craig.is/writing/chrome-logger
+Para poder hacer log a consola del navegador Chrome o Vivaldi
+simplemente insertando lineas así:
+ChromePhp::log('Welcome earthlings');
+ChromePhp::log($_SERVER);
+ChromePhp::warn('something went wrong!');
+*/
+
 function inicializaBBDD()
 {
 global $link;
 
-/*
-$servidorBBDD = "favoditos.db.3597201.hostedresource.com";
-$BBDDuser = "favoditos";
-$BBDDpwd = "Moscu80";
-$BBDDname = "favoditos";
-*/
 
-$servidorBBDD = "localhost";
+$servidorBBDD = 'localhost';
+$BBDDuser = 'u203037805_favs';
+$BBDDpwd = 'Moscu80';
+$BBDDname = 'u203037805_favs';
+
+
+
+/* $servidorBBDD = "localhost";
 $BBDDuser = "root";
 $BBDDpwd = "barcelona";
 $BBDDname = "favoditos";
+*/
+
 
 
 $link = @mysql_connect($servidorBBDD, $BBDDuser, $BBDDpwd) or die('Could not connect: ' . mysql_error());
+
+ChromePhp::log('Status de la conexión bbdd: ');
+ChromePhp::log($link);
+
 mysql_select_db($BBDDname) or die('Could not select database');
+
 // esta instrucción es nueva, es para el problema de los tags con acentos, pero no va bien
 //@mysql_query("SET NAMES 'utf8'",$link);
 }
@@ -135,14 +152,14 @@ function generaCategorias($user)
 
 
 function generaLinksBusqueda($user,$textoBusqueda){
-// copia la función generaLinksCat y cambia ligeramente el código para que busque el texto en cualquier campo de la tabla links.	
+// copia la función generaLinksCat y cambia ligeramente el código para que busque el texto en cualquier campo de la tabla links.
 
 	$textoBusqueda=mysql_real_escape_string($textoBusqueda);
-	
-	$query="select LI.linkId, LI.title, LI.URL, LI.comment, LI.date FROM link LI WHERE LI.title LIKE '%{$textoBusqueda}%' OR LI.comment LIKE '%{$textoBusqueda}%' "; 
+
+	$query="select LI.linkId, LI.title, LI.URL, LI.comment, LI.date FROM link LI WHERE LI.title LIKE '%{$textoBusqueda}%' OR LI.comment LIKE '%{$textoBusqueda}%' ";
 
 	$result = mysql_query($query) or die('Query failed: ' . mysql_error());
-	
+
 	echo '<div class="subheader col-8 col-m-12"><span class="usuario">'.$user.'</span>, estos son tus <span class="favoDitos">favoDitos</span> para ';
 	echo 'la b&uacute;squeda <span class="categoria">'. $textoBusqueda .'</span>. (<a href="nuevolink.php?user=' . $user . '">A&ntilde;ade un link</a>)   (<a href="userlinks.php">todos tus links</a>)</div>';
 	echo '</div>';
@@ -179,7 +196,7 @@ function generaLinksCat($user,$category)
 	$query=sprintf('SELECT LI.linkId, LI.title, LI.URL, LI.comment, LI.date FROM link LI, catlink CL WHERE LI.linkId=CL.linkId AND CL.categoryId="' . mysql_real_escape_string($category) . '" AND LI.userId="' . $user . '" ORDER BY LI.date DESC');
 
 	$result = mysql_query($query) or die('Query failed: ' . mysql_error());
-	
+
 	echo '<div class="subheader col-8 col-m-12"><span class="usuario">'.$user.'</span>, estos son tus <span class="favoDitos">favoDitos</span> para ';
 	echo 'la categor&iacute;a <span class="categoria">'. $category.'</span>. (<a href="nuevolink.php?user=' . $user . '">A&ntilde;ade un link</a>)   (<a href="userlinks.php">todos tus links</a>)</div>';
 
