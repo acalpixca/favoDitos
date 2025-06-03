@@ -17,7 +17,7 @@ FavoDitos, nuestro del.icio.us particular
 </div>
 </div>
 <div class="row">
-<div class="col-6 col-m-12">Por favor, identif&iacute;cate:</div>
+<div class="col-6 col-m-12">Por favorrr, identif&iacute;cate:</div>
 
 <?php
 include_once 'funciones.php';
